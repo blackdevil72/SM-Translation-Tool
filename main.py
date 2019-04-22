@@ -74,12 +74,13 @@ class Main:
 
     def import_plugin(self):
         path = QFileDialog.getExistingDirectory(dir=self.config['history']['last_open_folder'])
-        logger.debug(f'Selected path: {path}')
-        name = path.split('/')[-1]
-        p = Plugin(name=name, path=path)
-        self.session.add(p)
-        self.session.commit()
-        self.update_mpc_plugin_list()
+        if path:
+            logger.debug(f'Selected path: {path}')
+            name = path.split('/')[-1]
+            p = Plugin(name=name, path=path)
+            self.session.add(p)
+            self.session.commit()
+            self.update_mpc_plugin_list()
 
 
     def garbage_test_code(self):
