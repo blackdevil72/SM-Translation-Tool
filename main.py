@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from PySide2.QtUiTools import QUiLoader
 from PySide2.QtWidgets import \
-    QApplication, QPushButton, QLabel, QListWidget, QListWidgetItem, QFileDialog
+    QApplication, QPushButton, QLabel, QListWidget, QListWidgetItem, QFileDialog, QStackedWidget
 from PySide2.QtCore import QFile, QThread, Signal
 import sys
 import time
@@ -14,6 +14,7 @@ from platform import platform
 
 from ressources import qt_resource_data, qt_resource_name, qt_resource_struct
 from model import Plugin, Session
+from language_widget import Ui_Form as Language_Widget
 
 logger.info(os.name)
 logger.info(platform())
@@ -59,7 +60,11 @@ class Main:
         self.window.findChild(QLabel, 'mpc_title_frame_title').setText(self.config['options']['project_name'])
         self.window.setWindowTitle(self.config['options']['project_name'])
         self.window.findChild(QPushButton, 'mpc_btn_import').clicked.connect(self.import_plugin)
+        self.window.findChild(QListWidget, 'mpc_plugins_list').itemClicked.connect(self.load_plugin_by_item)
 
+        self.window.findChild(QPushButton, 'ps_btn_back').clicked.connect(self.go_to_main_screen)
+
+        self.go_to_main_screen()
         self.window.show()
 
         # todo: Delete this part before first release
@@ -70,18 +75,30 @@ class Main:
         list_ = self.window.findChild(QListWidget, 'mpc_plugins_list')
         list_.clear()
         for plugin in self.session.query(Plugin.name, Plugin.id):
-            list_.addItem(QListWidgetItem(plugin.name))
+            string = plugin.name
+            if len(string) > int(self.config['options']['plugin_list_max_len']):
+                string = string[:int(self.config['options']['plugin_list_max_len'])] + ' ...'
+            list_.addItem(QListWidgetItem(string))
 
     def import_plugin(self):
-        path = QFileDialog.getExistingDirectory(dir=self.config['history']['last_open_folder'])
+        path = QFileDialog.getOpenFileName(dir=self.config['history']['last_open_folder'], filter='*.txt')[0]
+        logger.debug(f'Selected path: {path}')
         if path:
-            logger.debug(f'Selected path: {path}')
             name = path.split('/')[-1]
             p = Plugin(name=name, path=path)
             self.session.add(p)
             self.session.commit()
             self.update_mpc_plugin_list()
 
+    def load_plugin_by_item(self, item):
+        logger.debug(item)
+        logger.debug(item.text())
+        self.window.findChild(QLabel, 'ps_plugin_name').setText(item.text())
+
+        self.window.findChild(QStackedWidget, 'stackedWidget').setCurrentIndex(1)
+
+    def go_to_main_screen(self):
+        self.window.findChild(QStackedWidget, 'stackedWidget').setCurrentIndex(0)
 
     def garbage_test_code(self):
         # p = Plugin(name='Hide & Seek', path="C:\\Users\\Tamer\\PycharmProjects\\SM-Translation-Tool\\Test")
