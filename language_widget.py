@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'language_widget.ui',
 # licensing of 'language_widget.ui' applies.
 #
-# Created: Mon Apr 22 18:00:55 2019
+# Created: Sat Jun  8 18:31:37 2019
 #      by: pyside2-uic  running on PySide2 5.12.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -18,7 +18,18 @@ class Ui_Form(object):
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setObjectName("horizontalLayout")
+        self.flag = QtWidgets.QLabel(Form)
+        self.flag.setMinimumSize(QtCore.QSize(16, 0))
+        self.flag.setMaximumSize(QtCore.QSize(16, 16777215))
+        self.flag.setText("")
+        self.flag.setObjectName("flag")
+        self.horizontalLayout.addWidget(self.flag)
         self.label = QtWidgets.QLabel(Form)
+        self.label.setMinimumSize(QtCore.QSize(25, 0))
+        self.label.setMaximumSize(QtCore.QSize(25, 16777215))
+        self.label.setStyleSheet("color: black;")
+        self.label.setText("")
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.horizontalLayout.addWidget(self.label)
         self.progressBar = QtWidgets.QProgressBar(Form)
@@ -43,6 +54,7 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         Form.setWindowTitle(QtWidgets.QApplication.translate("Form", "Form", None, -1))
-        self.label.setText(QtWidgets.QApplication.translate("Form", "Language", None, -1))
         self.pushButton.setText(QtWidgets.QApplication.translate("Form", "edit", None, -1))
         self.pushButton_2.setText(QtWidgets.QApplication.translate("Form", "delete", None, -1))
+
+import ressources_rc

@@ -19,20 +19,36 @@
   </property>
   <property name="styleSheet">
    <string notr="true">#mpc_title_frame {
-background-color: rgb(255, 170, 255);
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(1, 56, 126, 255), stop:1 rgba(59, 134, 209, 255));
+color: #9DC6F3
 }
 
 #mpc_plugins {
-	background-color: rgb(0, 170, 255);
+	background-color: #494F56;
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #494F56, stop:1 #31353A);
+color: white;
 }
 
 #mpc_plugins_list {
-	background-color: rgb(0, 170, 255);
+	background-color:  qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #494F56, stop:1 #31353A);
 	border: none;
 }
 
 #mpc_plugins_list::item {
 padding: 10px;
+color: white;
+background-color: #31353A;
+}
+#mpc_plugins_list::item:hover {
+background-color: #494F56
+}
+
+#ps_frame {
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(1, 56, 126, 255), stop:1 rgba(59, 134, 209, 255));
+color: #9DC6F3;}
+
+QLabel {
+color: #9DC6F3;
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -100,7 +116,7 @@ padding: 10px;
            <item>
             <widget class="QLabel" name="label">
              <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Plugins&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;Plugins&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
             </widget>
            </item>
@@ -112,7 +128,11 @@ padding: 10px;
             </widget>
            </item>
            <item>
-            <widget class="QListWidget" name="mpc_plugins_list"/>
+            <widget class="QListWidget" name="mpc_plugins_list">
+             <property name="alternatingRowColors">
+              <bool>true</bool>
+             </property>
+            </widget>
            </item>
            <item>
             <spacer name="verticalSpacer">
@@ -171,7 +191,7 @@ padding: 10px;
                 </size>
                </property>
                <property name="text">
-                <string>Projet à la con</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Projet à la con&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
               </widget>
              </item>
@@ -202,7 +222,7 @@ padding: 10px;
              <item row="1" column="0" colspan="3">
               <widget class="QLabel" name="mpc_title_frame_text">
                <property name="text">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i&lt;/p&gt;&lt;p&gt;ncididunt ut labore et dolore magna aliqua. Ut enim ad minim ven&lt;/p&gt;&lt;p&gt;iam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla&lt;/p&gt;&lt;p&gt; pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i&lt;/p&gt;&lt;p&gt;ncididunt ut labore et dolore magna aliqua. Ut enim ad minim ven&lt;/span&gt;&lt;/p&gt;&lt;p&gt;iam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla&lt;/p&gt;&lt;p&gt;pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
               </widget>
              </item>
@@ -302,9 +322,7 @@ padding: 10px;
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true">#ps_frame {
-background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 0, 0, 255), stop:0.166 rgba(255, 255, 0, 255), stop:0.333 rgba(0, 255, 0, 255), stop:0.5 rgba(0, 255, 255, 255), stop:0.666 rgba(0, 0, 255, 255), stop:0.833 rgba(255, 0, 255, 255), stop:1 rgba(255, 0, 0, 255));
-}</string>
+           <string notr="true"/>
           </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
@@ -321,36 +339,53 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgb
             </widget>
            </item>
            <item row="0" column="3" rowspan="5">
-            <widget class="QScrollArea" name="scrollArea">
+            <widget class="QScrollArea" name="ps_plugin_scrollArea">
              <property name="minimumSize">
               <size>
-               <width>300</width>
+               <width>400</width>
                <height>0</height>
               </size>
              </property>
              <property name="widgetResizable">
               <bool>true</bool>
              </property>
-             <widget class="QWidget" name="scrollAreaWidgetContents">
+             <widget class="QWidget" name="ps_plugin_scrollAreaWidgetContents">
               <property name="geometry">
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>298</width>
-                <height>480</height>
+                <width>398</width>
+                <height>528</height>
                </rect>
               </property>
-              <widget class="QWidget" name="verticalLayoutWidget_2">
-               <property name="geometry">
-                <rect>
-                 <x>40</x>
-                 <y>20</y>
-                 <width>211</width>
-                 <height>391</height>
-                </rect>
+              <layout class="QVBoxLayout" name="verticalLayout_3">
+               <property name="spacing">
+                <number>0</number>
                </property>
-               <layout class="QVBoxLayout" name="ps_scroll_grid"/>
-              </widget>
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QFrame" name="ps_plugin_language_frame">
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_4"/>
+                </widget>
+               </item>
+              </layout>
              </widget>
             </widget>
            </item>
@@ -381,13 +416,48 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgb
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="ps_delete_plugin_btn">
+              <widget class="QPushButton" name="ps_delete_language_btn">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
                <property name="text">
-                <string>Delete plugin</string>
+                <string>Delete Language</string>
                </property>
                <property name="icon">
                 <iconset resource="ressources.qrc">
                  <normaloff>:/icons/ressources/icons_famfamfam/delete.png</normaloff>:/icons/ressources/icons_famfamfam/delete.png</iconset>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="Line" name="line_2">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="ps_export_language_btn">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string>Export Language</string>
+               </property>
+               <property name="icon">
+                <iconset resource="ressources.qrc">
+                 <normaloff>:/icons/ressources/icons_famfamfam/application_go.png</normaloff>:/icons/ressources/icons_famfamfam/application_go.png</iconset>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="ps_export_plugin_btn">
+               <property name="text">
+                <string>Export Plugin</string>
+               </property>
+               <property name="icon">
+                <iconset resource="ressources.qrc">
+                 <normaloff>:/icons/ressources/icons_famfamfam/page_white_zip.png</normaloff>:/icons/ressources/icons_famfamfam/page_white_zip.png</iconset>
                </property>
               </widget>
              </item>
@@ -445,6 +515,34 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgb
               <set>Qt::AlignCenter</set>
              </property>
             </widget>
+           </item>
+           <item row="4" column="1" colspan="2">
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QPushButton" name="ps_delete_plugin_btn">
+               <property name="text">
+                <string>Delete plugin</string>
+               </property>
+               <property name="icon">
+                <iconset resource="ressources.qrc">
+                 <normaloff>:/icons/ressources/icons_famfamfam/delete.png</normaloff>:/icons/ressources/icons_famfamfam/delete.png</iconset>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_7">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
            </item>
           </layout>
          </widget>

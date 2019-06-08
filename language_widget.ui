@@ -30,9 +30,46 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="flag">
+     <property name="minimumSize">
+      <size>
+       <width>16</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16</width>
+       <height>16777215</height>
+      </size>
+     </property>
      <property name="text">
-      <string>Language</string>
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="minimumSize">
+      <size>
+       <width>25</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>25</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: black;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>
